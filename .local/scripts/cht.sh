@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 
-languages=$(echo "golang c cpp javascript rust python" | tr ' ' '\n')
-core_utils=$(echo "find xargs sed awk" | tr ' ' '\n')
-selected=$(echo -e "$languages\n$core_utils"| fzf)
+selected=`cat ~/.tmux-cht-languages ~/.tmux-cht-command | fzf`
+if [[ -z $selected ]]; then
+    exit 0
+fi
 
 read -p "Enter Query: " query
-if echo $languages | grep -qs $selected; then
-    # tmux split-window  -p 22 -v bash -c "curl cht.sh/$selected/$(echo "$query" | tr ' ' '+') | less"
-    # query=$(echo "$selected" | tr -d ' ')
-    tmux neww bash -c "curl -s cht.sh/$selected/$(echo "$query" | tr ' ' '+') | less"
+
+if grep -qs "$selected" ~/.tmux-cht-languages; then
+    query=`echo $query | tr ' ' '+'`
+    tmux splitw -h -p 100 bash -c "echo \"curl cht.sh/$selected/$query/\" & curl cht.sh/$selected/$query & while [ : ]; do sleep 1; done"
+    # tmux split-window  -p 42 -h bash -c "echo \"curl cht.sh/$selected/$query/\" & curl cht.sh/$selected/$query & while [ : ]; do sleep 1; done"
+
+
 else
-    tmux neww bash -c "curl cht.sh/$selected~$query) | less"
+    tmux splitw -h -p 100 bash -c "curl -s cht.sh/$selected~$query | less"
 fi
