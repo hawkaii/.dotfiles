@@ -325,25 +325,28 @@ mode "$mode_gaps_outer" {
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
 
-exec_always --no-startup-id picom -bc
+
+# exec_always --no-startup-id picom -bc
 exec_always --no-startup-id obsidian
 exec_always --no-startup-id spotify
 exec_always --no-startup-id dolphin
 exec --no-startup-id "wezterm"
 exec --no-startup-id "kitty"
-
+exec --no-startup-id "floorp"
 
 exec_always --no-startup-id Start Syncthing
 
-assign [class="firefox" instance="Navigator"] → $ws1
-assign [class="vivaldi-stable" instance="Vivaldi-stable"] → 1
+
+
+assign [class="floorp" instance="Navigator"] → $ws1
 assign [class="konsole"] → $ws3
 assign [class="kitty"] → $ws3
+# assign [class="vivaldi-stable" instance="Vivaldi-stable"] → 1
 # assign [class="vivaldi-stable"]  → 1
+# for_window [class="Spotify"] move to workspace $ws5
 
 assign [class="obsidian"] → $ws4
 
-# for_window [class="Spotify"] move to workspace $ws5
 
 #set wallpaper
 

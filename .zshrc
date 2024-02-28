@@ -130,6 +130,7 @@ PATH="$PATH":"$HOME.local/bin"
 export PATH=$PATH:/home/hawkaii/.spicetify
 
 bindkey -s '^f' 'tmux-sessionizer\n'
- typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+eval "$(zoxide init zsh)"
 neofetch
 tmux
