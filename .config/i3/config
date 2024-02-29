@@ -326,7 +326,7 @@ for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
 
 
-# exec_always --no-startup-id picom -bc
+exec_always --no-startup-id picom -bc
 exec_always --no-startup-id obsidian
 exec_always --no-startup-id spotify
 exec_always --no-startup-id dolphin
@@ -358,11 +358,11 @@ for_window [class="dolphin"]  move scratchpad
 bindsym $mod+Ctrl+n [class = "dolphin"] scratchpad show ; border pixel 5 
 
 for_window [class="wezterm"]  move scratchpad
-bindsym $mod+Ctrl+m [class = "wezterm"] scratchpad show ; border pixel 5  
+bindsym $mod+Ctrl+comma [class = "wezterm"] scratchpad show ; border pixel 5  
 
 
 for_window  [class= "Spotify"] move scratchpad
-bindsym $mod+Ctrl+minus [class = "Spotify"] scratchpad show ; border pixel 5  
+bindsym $mod+Ctrl+m [class = "Spotify"] scratchpad show ; border pixel 5  
 
 # bindsym $mod+Shift+o  [class= "kitty"] scratchpad show; move position center
 # exec --no-startup-id kitty
