@@ -133,4 +133,8 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 eval "$(zoxide init zsh)"
 neofetch
-tmux
+tmux a
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH=$PATH:/usr/local/go/bin

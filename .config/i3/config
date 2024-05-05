@@ -239,7 +239,6 @@ bindsym $mod+r mode "resize"
 # To get WM_CLASS and WM_TITLE values, on X run "xprop"
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
-for_window [class="keepassxc"] floating enable
 
 
 
@@ -334,7 +333,7 @@ exec --no-startup-id "wezterm"
 exec --no-startup-id "kitty"
 exec --no-startup-id "floorp"
 
-exec_always --no-startup-id Start Syncthing
+exec_always --no-startup-id syncthing
 
 
 
@@ -354,6 +353,8 @@ exec_always --no-startup-id nitrogen --restore
 
 #
 
+for_window [class="keepassxc"]  move scratchpad
+bindsym $mod+Ctrl+p [class = "keepassxc"] scratchpad show ; border pixel 5 
 for_window [class="dolphin"]  move scratchpad
 bindsym $mod+Ctrl+n [class = "dolphin"] scratchpad show ; border pixel 5 
 

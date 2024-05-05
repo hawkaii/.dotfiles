@@ -42,6 +42,12 @@ return {
                     {name = 'buffer'},
                     {name = "codeium"},
                     {name = "cody"},
+                    { name = "luasnip", keyword_length = 2 },
+                },
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end,
                 },
                 formatting = lsp_zero.cmp_format(),
                 mapping = cmp.mapping.preset.insert({
@@ -83,6 +89,7 @@ return {
                     'tsserver',
                     'pyright',
                     'rust_analyzer',
+                    'gopls',
                 },
                 handlers = {
                     lsp_zero.default_setup,
@@ -91,6 +98,16 @@ return {
                         local lua_opts = lsp_zero.nvim_lua_ls()
                         require('lspconfig').lua_ls.setup(lua_opts)
                     end,
+                }
+            })
+            lsp_zero.format_on_save({
+                format_opts = {
+                    async = false,
+                    timeout_ms = 10000,
+                },
+                servers = {
+                    ['tsserver'] = {'javascript', 'typescript'},
+                    ['rust_analyzer'] = {'rust'},
                 }
             })
         end
